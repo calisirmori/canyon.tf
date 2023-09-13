@@ -101,7 +101,6 @@ app.get('/api/findcookie/:id', (req, response) => {
 app.get('/api/steam-info/:id', async(req, res) => {
   const userId = req.params.id;
   var URL = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${process.env.STEAMKEY}&steamids=${userId}`;
-
   try {
     const logsApiResponse = await fetch(
       URL,
@@ -111,7 +110,6 @@ app.get('/api/steam-info/:id', async(req, res) => {
   } catch (error) {
     res.send("steam error")
   }
-  
 });
 
 app.get('/api/rgl-profile/:id', async(req, res) => {
@@ -127,12 +125,11 @@ app.get('/api/rgl-profile/:id', async(req, res) => {
   }
 })
 
-
-
-
 app.use(express.static(path.join(__dirname, "/client/dist")));
 
-
+app.get("*", (_, res) => {
+  res.sendFile(path.join(__dirname, "/client/dist", "index.html"));
+});
 
 app.listen(port, function () {
   console.info(
