@@ -146,26 +146,26 @@ function AdminPage() {
     }, [BlueResponse.isChecked]);
 
     return (
-      <div className="mb-5 flex justify-center items-center">
-        {RedResponse.name && (
-          <span className="text-white">#{RedResponse.name}</span>
-        )}
+      <div className="mb-5 flex justify-center items-center ">
+        <div className="w-80 justify-end items-center flex">
+          {RedResponse.name && (
+            <span className="text-stone-200 font-semibold text-xl">#{RedResponse.name}</span>
+          )}
 
-        {RedResponse.avatar && (
-          <img
-            src={`${RedResponse.avatar}`}
-            alt=""
-            className="rounded-lg h-8 mx-4"
-          />
-        )}
+          {RedResponse.avatar && (
+            <img
+              src={`${RedResponse.avatar}`}
+              alt=""
+              className="rounded-lg h-8 mx-4 "
+            />
+          )}
+        </div>
         <button
-          className="rounded-lg mr-2 mb-1"
-          style={{
-            width: "40px",
-            height: "40px",
-            backgroundColor: RedResponse.isChecked === 1 ? "green" : "red",
-            border: "1px solid white",
-          }}
+          className={`rounded-lg border-2 h-8 w-8 mr-2 ${
+            RedResponse.isChecked === 1
+              ? " bg-green-500 border-green-900"
+              : "bg-red-600 border-red-900"
+          }`}
           onClick={handleRedToggle}
         />
         <input
@@ -178,11 +178,10 @@ function AdminPage() {
           }}
           className="h-10 bg-stone-200 rounded-md text-xs w-[26rem] font-semibold border-2 border-tf-red px-2 outline-none"
         />
-
         <img
           src={`../../../classIcons/${className}.png`}
           alt=""
-          className=" h-8 mx-4"
+          className="h-8 mx-4"
         />
         <input
           id="RGLLink"
@@ -195,25 +194,25 @@ function AdminPage() {
           className="h-10 bg-stone-200 rounded-md text-xs w-[26rem] font-semibold border-2 border-tf-blue px-2 outline-none"
         />
         <button
-          className="rounded-lg ml-2 mb-1"
-          style={{
-            width: "40px",
-            height: "40px",
-            backgroundColor: BlueResponse.isChecked === 1 ? "green" : "red",
-            border: "1px solid white",
-          }}
+          className={`rounded-lg border-2 h-8 w-8 ml-2 ${
+            BlueResponse.isChecked === 1
+              ? " bg-green-500 border-green-900"
+              : "bg-red-600 border-red-900"
+          }`}
           onClick={handleBlueToggle}
         />
-        {BlueResponse.avatar && (
-          <img
-            src={`${BlueResponse.avatar}`}
-            alt=""
-            className="rounded-lg h-8 mx-4"
-          />
-        )}
-        {BlueResponse.name && (
-          <span className="text-white">#{BlueResponse.name}</span>
-        )}
+        <div className="w-80 flex justify-start items-center">
+          {BlueResponse.avatar && (
+            <img
+              src={`${BlueResponse.avatar}`}
+              alt=""
+              className="rounded-lg h-8 ml-4 mr-2"
+            />
+          )}
+          {BlueResponse.name && (
+            <span className="text-stone-200 font-semibold text-xl">#{BlueResponse.name}</span>
+          )}
+        </div>
       </div>
     );
   }
