@@ -19,7 +19,6 @@ function AdminPage(){
                 <input type="text" className="h-10 bg-stone-200 rounded-md text-xs w-[26rem] font-semibold border-2 border-tf-red px-2 outline-none" />
                 <img src={`../../../classIcons/scout.png`} alt="" className=" h-8 mx-4"/>
                 <input type="text" className="h-10 bg-stone-200 rounded-md text-xs w-[26rem] font-semibold border-2 border-tf-blue px-2 outline-none" />
-
             </div>
         </div>
       </div>
