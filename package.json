@@ -19,13 +19,18 @@
   },
   "homepage": "https://github.com/calisirmori/canyon.tf#readme",
   "dependencies": {
+    "@passport-next/passport-openid": "^1.0.0",
     "@sapphire/fetch": "^2.4.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
     "nodemon": "^3.0.1",
+    "openid": "^2.0.10",
     "passport": "^0.6.0",
-    "passport-steam": "^1.0.18"
+    "passport-steam": "^1.0.18",
+    "pg": "^8.11.3"
   }
 }

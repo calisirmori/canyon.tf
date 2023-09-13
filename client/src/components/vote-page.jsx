@@ -11,6 +11,9 @@ function VotePage() {
   const [currentSniperPercent, setCurrentSniperPercent] = useState(50);
   const [currentSpyPercent, setCurrentSpyPercent] = useState(50);
 
+  const currentUserID = "76561198068401396"
+  const currentMatchID = "1"
+
   useEffect(() => {
     console.log(currentScoutPercent);
   }, [currentScoutPercent]);
@@ -59,10 +62,11 @@ function VotePage() {
       />
       <div class=" bg-stone-950 w-screen h-screen absolute opacity-90"></div>
       <div class="w-screen h-screen absolute font-mont">
-        <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-10">
-          canyon.tf
+        <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
+          <div>canyon.tf</div> 
+          <a href="http://localhost:3000/api/myprofile">LOGIN</a>
         </div>
-        <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-10">
+        <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-5">
           <div className="w-96 flex justify-end text-5xl">FASTFOURTH</div>
           <div className="w-72 flex justify-center text-3xl">VS</div>
           <div className="w-96 flex justify-start text-5xl wra">SOMEBODY HELP</div>
@@ -76,6 +80,9 @@ function VotePage() {
         {classSection(currentMedicPercent, setCurrentMedicPercent, "medic")}
         {classSection(currentSniperPercent, setCurrentSniperPercent, "sniper")}
         {classSection(currentSpyPercent, setCurrentSpyPercent, "spy")}
+        <div className="flex justify-center items-center mt-6">
+          <div className="select-none font-5xl flex justify-center items-center bg-tf-orange w-40 rounded-md border-2 p-1 border-tf-orange-dark font-bold text-xl text-stone-900 hover:scale-105 cursor-pointer duration-150">SUBMIT</div>
+        </div>
       </div>
     </div>
   );
@@ -123,7 +130,7 @@ function VotePage() {
             onClick={() =>
               blueVote(currentPercentSelection, setCurrentPercentSelection)
             }
-            className="h-14 bg-stone-300 w-64 rounded-lg drop-shadow-md hover:cursor-pointer border-4 border-tf-blue hover:border-tf-blue-dark duration-150 flex items-center justify-center font-bold select-none"
+            className="h-14  bg-stone-300 w-64 rounded-lg drop-shadow-md hover:cursor-pointer border-4 border-tf-blue hover:border-tf-blue-dark duration-150 flex items-center justify-center font-bold select-none"
           >
             {currentPlayers.blue[className]}
           </div>

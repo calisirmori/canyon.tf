@@ -8,8 +8,10 @@ const session = require('express-session');
 const passportSteam = require('passport-steam');
 const SteamStrategy = passportSteam.Strategy;
 const cookieParser = require('cookie-parser');
-
+const fs = require('fs');
+const Pool = require('pg').Pool
 const port = process.env.PORT || 3000;
+require('dotenv').config();
 
 app.use(express.json());
 app.use(cors());
@@ -33,9 +35,9 @@ passport.serializeUser((user, done) => {
  });
 
 passport.use(new SteamStrategy({
- returnURL: 'http://localhost:5173/api/auth/steam/return',
- realm: 'http://localhost:5173',
- apiKey: `${process.env.STEAMKEY || "18D6B8C4F205B3A1BD6608A68EC83C3F"}`
+ returnURL: 'http://localhost:3000/api/auth/steam/return',
+ realm: 'http://localhost:3000',
+ apiKey: `${process.env.STEAMKEY}`
  }, function (identifier, profile, done) {
   process.nextTick(function () {
    profile.identifier = identifier;
@@ -64,6 +66,23 @@ app.get('/api/auth/steam/return', passport.authenticate('steam', {failureRedirec
   res.redirect(`/profile/${res.req.user.id}`)
 });
 
+const pool = new Pool({
+  username: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  host: process.env.PGHOST,
+  port: process.env.PGPORT,
+  database: process.env.PGDATABASE,
+  ssl: {
+    ca: fs.readFileSync("./ca-certificate.crt")
+  },
+})
+
+app.get('/api/testdb', (req, response) => {
+  pool.query(`SELECT * FROM match ORDER BY matchid DESC LIMIT 2`)
+  .then((res) => response.send(res))
+  .catch((err) => console.error(err))
+});
+
 app.get('/api/myprofile', (req, res) => {
   if (req.cookies.userid !== undefined){
     res.redirect(`/profile/${req.cookies.userid}`)
@@ -81,7 +100,7 @@ app.get('/api/findcookie/:id', (req, response) => {
 
 app.get('/api/steam-info/:id', async(req, res) => {
   const userId = req.params.id;
-  var URL = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${process.env.STEAMKEY || "18D6B8C4F205B3A1BD6608A68EC83C3F"}&steamids=${userId}`;
+  var URL = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${process.env.STEAMKEY}&steamids=${userId}`;
 
   try {
     const logsApiResponse = await fetch(
@@ -108,11 +127,12 @@ app.get('/api/rgl-profile/:id', async(req, res) => {
   }
 })
 
+
+
+
 app.use(express.static(path.join(__dirname, "/client/dist")));
 
-app.get("*", (_, res) => {
-  res.sendFile(path.join(__dirname, "/client/dist", "index.html"));
-});
+
 
 app.listen(port, function () {
   console.info(
