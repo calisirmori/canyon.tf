@@ -62,8 +62,10 @@ function VotePage() {
   useEffect(() => {
     axios.get("https://www.canyon.tf/api/current-user")
       .then((response) => {
-        const userId = String(response.data);
+        const userId = response.data.toString();
+        console.log(response)
         console.log(userId)
+        console.log(typeof userId)
         setCurrentUserID(userId);
       })
       .catch((error) => {
