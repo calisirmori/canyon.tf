@@ -336,9 +336,9 @@ function VotePage() {
                 currentUserID !== "" ? "bg-tf-blue" : "bg-tf-orange"
               }  rounded-md relative`}
             >
-              <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5"></div>
+              
               <div
-                className={`absolute rounded-l-lg h-1 bg-tf-red ${
+                className={`absolute rounded-l-lg h-1 bg-tf-red -z-10 ${
                   playerAlreadyVoted ? "duration-1000" : "duration-150"
                 }`}
                 style={{
@@ -349,7 +349,7 @@ function VotePage() {
                   }%`,
                 }}
                 ></div>
-
+              <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
             </div>
           </div>
           <div
