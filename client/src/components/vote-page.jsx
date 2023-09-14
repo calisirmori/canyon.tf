@@ -21,7 +21,7 @@ function VotePage() {
   const [currentSpyPercent, setCurrentSpyPercent] = useState(50);
   const [playerAlreadyVoted, setCurrentVoteStatus] = useState(true);
   const [communityAverage, setCommunityAverages] = useState({});
-  const [currentUserID, setCurrentUserID] = useState(undefined);
+  const [currentUserID, setCurrentUserID] = useState("76561198068401395");
 
   const currentMatchID = currentMatch;
 
@@ -43,13 +43,15 @@ function VotePage() {
 
     try {
       const response = await axios.post(
-        "https://canyon-tf-site-dg3ts.ondigitalocean.app/api/testwrite",
+        "https://canyontf-production.up.railway.app/api/testwrite",
         data
       );
       console.log("Server Response:", response.data);
     } catch (error) {
       console.error("Error posting data:", error);
     }
+
+    setCurrentVoteStatus(true);
   };
 
   const params = {
@@ -58,8 +60,7 @@ function VotePage() {
   };
 
   useEffect(() => {
-    axios
-      .get("https://canyon-tf-site-dg3ts.ondigitalocean.app/api/current-user")
+    axios.get("https://canyontf-production.up.railway.app/api/current-user")
       .then((response) => {
         console.log(response.data);
       })
@@ -69,7 +70,7 @@ function VotePage() {
     
     if(currentUserID !== undefined){
       axios
-      .get("https://canyon-tf-site-dg3ts.ondigitalocean.app/api/check-vote", { params })
+      .get("https://canyontf-production.up.railway.app/api/check-vote", { params })
       .then((response) => {
         response.data[0] === undefined
           ? setCurrentVoteStatus(false)
@@ -86,7 +87,7 @@ function VotePage() {
           setCurrentSpyPercent(50);
         } else {
           axios
-            .get("https://canyon-tf-site-dg3ts.ondigitalocean.app/api/community-average", { params })
+            .get("https://canyontf-production.up.railway.app/api/community-average", { params })
             .then((response) => {
               if(communityAverage.scout === undefined) {
                 setCommunityAverages(response.data[0]);
@@ -113,7 +114,7 @@ function VotePage() {
     }
 
     
-  }, [communityAverage]);
+  }, [communityAverage,playerAlreadyVoted]);
 
   const redVote = (currentPercent, setPercentFunction) => {
     const newScore = Math.min(currentPercent + 5, 100);
@@ -161,7 +162,7 @@ function VotePage() {
       <div className="w-screen h-screen absolute font-mont">
         <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
           <div>canyon.tf</div>
-          <a href="https://canyon-tf-site-dg3ts.ondigitalocean.app/api/myprofile">LOGIN</a>
+          <a href="https://canyontf-production.up.railway.app/api/myprofile">LOGIN</a>
         </div>
         <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-5">
           <div className="w-96 flex justify-end text-5xl">FASTFOURTH</div>
@@ -230,22 +231,26 @@ function VotePage() {
                   className={`h-7 bottom-1.5 -ml-3  absolute transform ${
                     playerAlreadyVoted ? "duration-1000" : "duration-150"
                   } select-none`}
-                  style={{ left: `${communityAverage[dbName] - 1}% ` }}
+                  style={{ left: `${playerAlreadyVoted ?  communityAverage[dbName] - 1 : currentPercentSelection - 1}% ` }}
                   alt=""
                 />
                 <div
                   className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-stone-300 absolute -bottom-1 left-1/2 transform ${
                     playerAlreadyVoted ? "duration-1000" : "duration-150"
                   }`}
-                  style={{ left: `${communityAverage[dbName] - 1}%` }}
+                  style={{ left: `${playerAlreadyVoted ?  communityAverage[dbName] - 1 : currentPercentSelection - 1}%` }}
                 ></div>
                 {playerAlreadyVoted && (
                   <div
                     className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-2.5 left-1/2 transform ${
                       playerAlreadyVoted ? "duration-1000" : "duration-150"
                     }`}
-                    style={{ left: `${currentPercentSelection}%` }}
+                    style={{ left: `${currentPercentSelection -1}%` }}
                   >
+                    <div className="absolute -bottom-0.5 select-none">
+                      <div className="text-[0.5rem] text-tf-orange font-bold absolute -bottom-3 -left-2.5">YOUR</div>
+                      <div className="text-[0.5rem] text-tf-orange font-bold absolute -bottom-5 -left-2.5">VOTE</div>
+                    </div>
                   </div>
                 )}
               </div>
@@ -255,7 +260,7 @@ function VotePage() {
                 className={`absolute rounded-l-lg h-1 bg-tf-red ${
                   playerAlreadyVoted ? "duration-1000" : "duration-150"
                 }`}
-                style={{ width: `${communityAverage[dbName]}%` }}
+                style={{ width: `${playerAlreadyVoted ?  communityAverage[dbName] : currentPercentSelection}%` }}
               ></div>
             </div>
           </div>
