@@ -69,7 +69,7 @@ function VotePage() {
         console.error("Error fetching data:", error);
       });
     
-    if(currentUserID !== undefined){
+    if(currentUserID.includes("76")){
       axios
       .get("https://www.canyon.tf/api/check-vote", { params })
       .then((response) => {
