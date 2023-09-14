@@ -3,6 +3,30 @@ import axios from "axios";
 
 function AdminPage() {
   const [totalReactPackages, setTotalReactPackages] = useState(0);
+  const [RedTeamDetails, setRedTeamDetails] = useState({
+    scout: null,
+    soldier: null,
+    pyro: null,
+    demoman: null,
+    heavy: null,
+    engie: null,
+    medic: null,
+    sniper: null,
+    spy: null,
+  });
+
+  const [BlueTeamDetails, setBlueTeamDetails] = useState({
+    scout: null,
+    soldier: null,
+    pyro: null,
+    demoman: null,
+    heavy: null,
+    engie: null,
+    medic: null,
+    sniper: null,
+    spy: null,
+  });
+
   const [RedTeam, setRedTeam] = useState({
     scout: 0,
     soldier: 0,
@@ -40,7 +64,10 @@ function AdminPage() {
 
   function SubmitButton() {
     return (
-      <div className="flex justify-center items-center mt-6">
+      <div
+        className="flex justify-center items-center mt-6"
+        onClick={logTeamsDetails}
+      >
         <div className="select-none font-5xl flex justify-center items-center bg-tf-orange w-40 rounded-md border-2 p-1 border-tf-orange-dark font-bold text-xl text-stone-900 hover:scale-105 cursor-pointer duration-150">
           SUBMIT
         </div>
@@ -61,7 +88,9 @@ function AdminPage() {
     setTotalReactPackages(response.data.total);
     console.log(response.data.name);
     console.log(response.data.avatar);
-    return response;
+
+    // Return both the response and the UserID
+    return { data: response.data, userId: UserID };
   };
 
   return (
@@ -100,6 +129,42 @@ function AdminPage() {
     const [RedResponse, setRedResponse] = useState({ isChecked: 0 });
     const [BlueClassRGLLink, setBlueClassRGLLink] = useState("");
     const [BlueResponse, setBlueResponse] = useState({ isChecked: 0 });
+
+    useEffect(() => {
+      if (RedClassRGLLink) {
+        userAvatarAndNameGetter(RedClassRGLLink).then(({ data, userId }) => {
+          setRedResponse(data);
+
+          // Update the details state
+          setRedTeamDetails((prevDetails) => ({
+            ...prevDetails,
+            [className]: {
+              name: data.name,
+
+              userId: userId,
+            },
+          }));
+        });
+      }
+    }, [RedClassRGLLink]);
+
+    useEffect(() => {
+      if (BlueClassRGLLink) {
+        userAvatarAndNameGetter(BlueClassRGLLink).then(({ data, userId }) => {
+          setBlueResponse(data);
+
+          // Update the details state
+          setBlueTeamDetails((prevDetails) => ({
+            ...prevDetails,
+            [className]: {
+              name: data.name,
+
+              userId: userId,
+            },
+          }));
+        });
+      }
+    }, [BlueClassRGLLink]);
 
     useEffect(() => {
       if (RedClassRGLLink) {
@@ -149,9 +214,10 @@ function AdminPage() {
       <div className="mb-5 flex justify-center items-center ">
         <div className="w-80 justify-end items-center flex">
           {RedResponse.name && (
-            <span className="text-stone-200 font-semibold text-xl">#{RedResponse.name}</span>
+            <span className="text-stone-200 font-semibold text-xl">
+              #{RedResponse.name}
+            </span>
           )}
-
           {RedResponse.avatar && (
             <img
               src={`${RedResponse.avatar}`}
@@ -210,11 +276,17 @@ function AdminPage() {
             />
           )}
           {BlueResponse.name && (
-            <span className="text-stone-200 font-semibold text-xl">#{BlueResponse.name}</span>
+            <span className="text-stone-200 font-semibold text-xl">
+              #{BlueResponse.name}
+            </span>
           )}
         </div>
       </div>
     );
+  }
+  function logTeamsDetails() {
+    const Teams = { RedTeamDetails, BlueTeamDetails };
+    console.log("Team Details:", Teams);
   }
 }
 
