@@ -36,7 +36,7 @@ passport.serializeUser((user, done) => {
 
 passport.use(new SteamStrategy({
  returnURL: 'https://canyon-tf-site-dg3ts.ondigitalocean.app/api/auth/steam/return',
- realm: 'https://canyon-tf-site-dg3ts.ondigitalocean.app',
+ realm: 'https://canyon-tf-site-dg3ts.ondigitalocean.app/',
  apiKey: `${process.env.STEAMKEY}`
  }, function (identifier, profile, done) {
   process.nextTick(function () {
@@ -63,7 +63,7 @@ app.get('/api/auth/steam', passport.authenticate('steam', {failureRedirect: '/ap
 
 app.get('/api/auth/steam/return', passport.authenticate('steam', {failureRedirect: '/api/steam'}), function (req, res) {
   res.cookie('userid', res.req.user.id , { maxAge: 900000, httpOnly: true });
-  res.redirect(`/profile/${res.req.user.id}`)
+  res.redirect(`/`)
 });
 
 const pool = new Pool({
