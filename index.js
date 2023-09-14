@@ -139,10 +139,10 @@ app.get('/api/myprofile', (req, res) => {
 app.get('/api/current-user', (req, res) => {
 
   if (req.cookies.userid !== undefined){
-    res.send(String(req.cookies.userid));
+    res.send(req.cookies.userid.toString());
     console.log(req.cookies)
     console.log(req.cookies.userid)
-    console.log(String(req.cookies.userid))
+    console.log(req.cookies.userid.toString())
     console.log("here")
   } else {
     res.send(undefined);
