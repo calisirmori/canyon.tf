@@ -63,15 +63,15 @@ function VotePage() {
     axios.get("https://www.canyon.tf/api/current-user")
       .then((response) => {
         const userId = response.data.playerID.toString();
-        console.log(response)
-        console.log(userId)
-        console.log(typeof userId)
         setCurrentUserID(userId);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
     
+  }, [communityAverage,playerAlreadyVoted]);
+
+  useEffect(() => {
     if(currentUserID.includes("76")){
       console.log(currentUserID + "asdhadjahsdjkasdhlka")
       axios
@@ -116,10 +116,8 @@ function VotePage() {
         console.error("Error fetching data:", error);
       });
     }
-
-    
-  }, [communityAverage,playerAlreadyVoted]);
-
+  }, [currentUserID])
+  
   const redVote = (currentPercent, setPercentFunction) => {
     const newScore = Math.min(currentPercent + 5, 100);
     setPercentFunction(newScore);
