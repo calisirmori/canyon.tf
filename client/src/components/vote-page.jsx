@@ -62,14 +62,16 @@ function VotePage() {
   useEffect(() => {
     axios.get("https://www.canyon.tf/api/current-user")
       .then((response) => {
-        const userId = BigInt(response.data);
-        setCurrentUserID(userId.toString());
+        const userId = String(response.data);
+        console.log(userId)
+        setCurrentUserID(userId);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
     
     if(currentUserID.includes("76")){
+      console.log(currentUserID + "asdhadjahsdjkasdhlka")
       axios
       .get("https://www.canyon.tf/api/check-vote", { params })
       .then((response) => {
