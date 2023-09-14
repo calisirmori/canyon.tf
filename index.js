@@ -35,8 +35,8 @@ passport.serializeUser((user, done) => {
  });
 
 passport.use(new SteamStrategy({
- returnURL: 'https://canyontf-production.up.railway.app/api/auth/steam/return',
- realm: 'https://canyontf-production.up.railway.app',
+ returnURL: 'https://www.canyon.tf/api/auth/steam/return',
+ realm: 'https://www.canyon.tf',
  apiKey: `${process.env.STEAMKEY}`
  }, function (identifier, profile, done) {
   process.nextTick(function () {

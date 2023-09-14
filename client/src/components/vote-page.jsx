@@ -43,7 +43,7 @@ function VotePage() {
 
     try {
       const response = await axios.post(
-        "https://canyontf-production.up.railway.app/api/testwrite",
+        "https://www.canyon.tf/api/testwrite",
         data
       );
       console.log("Server Response:", response.data);
@@ -60,7 +60,7 @@ function VotePage() {
   };
 
   useEffect(() => {
-    axios.get("https://canyontf-production.up.railway.app/api/current-user")
+    axios.get("https://www.canyon.tf/api/current-user")
       .then((response) => {
         console.log(response.data);
       })
@@ -70,7 +70,7 @@ function VotePage() {
     
     if(currentUserID !== undefined){
       axios
-      .get("https://canyontf-production.up.railway.app/api/check-vote", { params })
+      .get("https://www.canyon.tf/api/check-vote", { params })
       .then((response) => {
         response.data[0] === undefined
           ? setCurrentVoteStatus(false)
@@ -87,7 +87,7 @@ function VotePage() {
           setCurrentSpyPercent(50);
         } else {
           axios
-            .get("https://canyontf-production.up.railway.app/api/community-average", { params })
+            .get("https://www.canyon.tf/api/community-average", { params })
             .then((response) => {
               if(communityAverage.scout === undefined) {
                 setCommunityAverages(response.data[0]);
@@ -162,7 +162,7 @@ function VotePage() {
       <div className="w-screen h-screen absolute font-mont">
         <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
           <div>canyon.tf</div>
-          <a href="https://canyontf-production.up.railway.app/api/myprofile">LOGIN</a>
+          <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>
         </div>
         <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-5">
           <div className="w-96 flex justify-end text-5xl">FASTFOURTH</div>
