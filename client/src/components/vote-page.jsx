@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function VotePage() {
+
+  const homeMatchID = 69;
+
+  const id = window.location.href;
+  const idArray = id.split("/");
+  let currentMatch;
+  idArray[4] !== undefined ? currentMatch = idArray[4] : currentMatch = homeMatchID;
+
   const [currentScoutPercent, setCurrentScoutPercent] = useState(50);
   const [currentSoldierPercent, setCurrentSoldierPercent] = useState(50);
   const [currentPyroPercent, setCurrentPyroPercent] = useState(50);
@@ -13,9 +21,9 @@ function VotePage() {
   const [currentSpyPercent, setCurrentSpyPercent] = useState(50);
   const [playerAlreadyVoted, setCurrentVoteStatus] = useState(true);
   const [communityAverage, setCommunityAverages] = useState({});
+  const [currentUserID, setCurrentUserID] = useState(undefined);
 
-  const currentUserID = "76561198068401396";
-  const currentMatchID = "69";
+  const currentMatchID = currentMatch;
 
   const sendDataToServer = async () => {
     const data = {
@@ -35,7 +43,7 @@ function VotePage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/testwrite",
+        "https://canyon-tf-site-dg3ts.ondigitalocean.app/api/testwrite",
         data
       );
       console.log("Server Response:", response.data);
@@ -51,15 +59,34 @@ function VotePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/check-vote", { params })
+      .get("https://canyon-tf-site-dg3ts.ondigitalocean.app/api/current-user")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+    
+    if(currentUserID !== undefined){
+      axios
+      .get("https://canyon-tf-site-dg3ts.ondigitalocean.app/api/check-vote", { params })
       .then((response) => {
         response.data[0] === undefined
           ? setCurrentVoteStatus(false)
           : setCurrentVoteStatus(true);
         if (response.data[0] === undefined) {
+          setCurrentScoutPercent(50);
+          setCurrentSoldierPercent(50);
+          setCurrentPyroPercent(50);
+          setCurrentDemoPercent(50);
+          setCurrentHeavyPercent(50);
+          setCurrentEngineerPercent(50);
+          setCurrentMedicPercent(50);
+          setCurrentSniperPercent(50);
+          setCurrentSpyPercent(50);
         } else {
           axios
-            .get("http://localhost:3000/api/community-average", { params })
+            .get("https://canyon-tf-site-dg3ts.ondigitalocean.app/api/community-average", { params })
             .then((response) => {
               if(communityAverage.scout === undefined) {
                 setCommunityAverages(response.data[0]);
@@ -83,6 +110,9 @@ function VotePage() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+    }
+
+    
   }, [communityAverage]);
 
   const redVote = (currentPercent, setPercentFunction) => {
@@ -131,7 +161,7 @@ function VotePage() {
       <div className="w-screen h-screen absolute font-mont">
         <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
           <div>canyon.tf</div>
-          <a href="http://localhost:3000/api/myprofile">LOGIN</a>
+          <a href="https://canyon-tf-site-dg3ts.ondigitalocean.app/api/myprofile">LOGIN</a>
         </div>
         <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-5">
           <div className="w-96 flex justify-end text-5xl">FASTFOURTH</div>
@@ -200,22 +230,23 @@ function VotePage() {
                   className={`h-7 bottom-1.5 -ml-3  absolute transform ${
                     playerAlreadyVoted ? "duration-1000" : "duration-150"
                   } select-none`}
-                  style={{ left: `${currentPercentSelection - 1}% ` }}
+                  style={{ left: `${communityAverage[dbName] - 1}% ` }}
                   alt=""
                 />
                 <div
                   className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-stone-300 absolute -bottom-1 left-1/2 transform ${
                     playerAlreadyVoted ? "duration-1000" : "duration-150"
                   }`}
-                  style={{ left: `${currentPercentSelection - 1}%` }}
+                  style={{ left: `${communityAverage[dbName] - 1}%` }}
                 ></div>
                 {playerAlreadyVoted && (
                   <div
-                    className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-1 left-1/2 transform ${
+                    className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-2.5 left-1/2 transform ${
                       playerAlreadyVoted ? "duration-1000" : "duration-150"
                     }`}
-                    style={{ left: `${communityAverage[dbName]}%` }}
-                  ></div>
+                    style={{ left: `${currentPercentSelection}%` }}
+                  >
+                  </div>
                 )}
               </div>
             </div>
@@ -224,7 +255,7 @@ function VotePage() {
                 className={`absolute rounded-l-lg h-1 bg-tf-red ${
                   playerAlreadyVoted ? "duration-1000" : "duration-150"
                 }`}
-                style={{ width: `${currentPercentSelection}%` }}
+                style={{ width: `${communityAverage[dbName]}%` }}
               ></div>
             </div>
           </div>

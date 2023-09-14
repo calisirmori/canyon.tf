@@ -35,8 +35,8 @@ passport.serializeUser((user, done) => {
  });
 
 passport.use(new SteamStrategy({
- returnURL: 'http://localhost:3000/api/auth/steam/return',
- realm: 'http://localhost:3000',
+ returnURL: 'https://canyon-tf-site-dg3ts.ondigitalocean.app/api/auth/steam/return',
+ realm: 'https://canyon-tf-site-dg3ts.ondigitalocean.app',
  apiKey: `${process.env.STEAMKEY}`
  }, function (identifier, profile, done) {
   process.nextTick(function () {
@@ -132,6 +132,14 @@ app.get('/api/myprofile', (req, res) => {
     res.redirect(`/profile/${req.cookies.userid}`)
   } else {
     res.redirect(`/api/auth/steam`)
+  }
+});
+
+app.get('/api/current-user', (req, res) => {
+  if (req.cookies.userid !== undefined){
+    response.send(req.cookies.userid);
+  } else {
+    response.send(undefined);
   }
 });
 

@@ -8,6 +8,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<VotePage />} />
+        <Route path="/match/:id" element={<VotePage />}/>
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
