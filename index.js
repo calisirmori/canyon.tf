@@ -168,7 +168,7 @@ app.get('/api/steam-info/:id', async(req, res) => {
 
 app.get('/api/rgl-profile/:id', async(req, res) => {
   const userId = req.params.id;
-  var URL = `://api.rgl.gg/v0/profile/${userId}`;
+  var URL = `https://api.rgl.gg/v0/profile/${userId}`;
   try {
     const logsApiResponse = await fetch(
       URL,
