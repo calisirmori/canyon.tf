@@ -21,7 +21,7 @@ function VotePage() {
   const [currentSpyPercent, setCurrentSpyPercent] = useState(50);
   const [playerAlreadyVoted, setCurrentVoteStatus] = useState(true);
   const [communityAverage, setCommunityAverages] = useState({});
-  const [currentUserID, setCurrentUserID] = useState("76561198068401395");
+  const [currentUserID, setCurrentUserID] = useState(0);
 
   const currentMatchID = currentMatch;
 
@@ -62,7 +62,8 @@ function VotePage() {
   useEffect(() => {
     axios.get("https://www.canyon.tf/api/current-user")
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
+        setCurrentUserID(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -105,7 +106,6 @@ function VotePage() {
           setCurrentMedicPercent(response.data[0].medic_prediction);
           setCurrentSniperPercent(response.data[0].sniper_prediction);
           setCurrentSpyPercent(response.data[0].spy_prediction);
-          console.log(communityAverage)
         }
       })
       .catch((error) => {
@@ -162,7 +162,9 @@ function VotePage() {
       <div className="w-screen h-screen absolute font-mont">
         <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
           <div>canyon.tf</div>
-          <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>
+          
+          {currentUserID !== 0 && <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>} 
+          
         </div>
         <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-5">
           <div className="w-96 flex justify-end text-5xl">FASTFOURTH</div>
