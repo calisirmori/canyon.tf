@@ -62,8 +62,8 @@ function VotePage() {
   useEffect(() => {
     axios.get("https://www.canyon.tf/api/current-user")
       .then((response) => {
-        console.log(response);
-        setCurrentUserID(response.data);
+        const userId = BigInt(response.data);
+        setCurrentUserID(userId.toString());
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -163,7 +163,7 @@ function VotePage() {
         <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
           <div>canyon.tf</div>
           
-          {currentUserID !== "" && <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>} 
+          {currentUserID === "" && <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>} 
           
         </div>
         <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-5">
