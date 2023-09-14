@@ -35,8 +35,8 @@ passport.serializeUser((user, done) => {
  });
 
 passport.use(new SteamStrategy({
- returnURL: 'https://canyon-tf-site-dg3ts.ondigitalocean.app/api/auth/steam/return',
- realm: 'https://canyon-tf-site-dg3ts.ondigitalocean.app',
+ returnURL: 'https://canyontf-production.up.railway.app/api/auth/steam/return',
+ realm: 'https://canyontf-production.up.railway.app',
  apiKey: `${process.env.STEAMKEY}`
  }, function (identifier, profile, done) {
   process.nextTick(function () {
@@ -136,10 +136,12 @@ app.get('/api/myprofile', (req, res) => {
 });
 
 app.get('/api/current-user', (req, res) => {
+
   if (req.cookies.userid !== undefined){
-    response.send(req.cookies.userid);
+    res.send(req.cookies.userid);
+    console.log("here")
   } else {
-    response.send(undefined);
+    res.send(undefined);
   }
 });
 
@@ -166,7 +168,7 @@ app.get('/api/steam-info/:id', async(req, res) => {
 
 app.get('/api/rgl-profile/:id', async(req, res) => {
   const userId = req.params.id;
-  var URL = `https://api.rgl.gg/v0/profile/${userId}`;
+  var URL = `://api.rgl.gg/v0/profile/${userId}`;
   try {
     const logsApiResponse = await fetch(
       URL,
