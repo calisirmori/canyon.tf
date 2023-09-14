@@ -36,7 +36,7 @@ passport.serializeUser((user, done) => {
 
 passport.use(new SteamStrategy({
  returnURL: 'https://canyon-tf-site-dg3ts.ondigitalocean.app/api/auth/steam/return',
- realm: 'https://canyon-tf-site-dg3ts.ondigitalocean.app/',
+ realm: 'https://canyon-tf-site-dg3ts.ondigitalocean.app',
  apiKey: `${process.env.STEAMKEY}`
  }, function (identifier, profile, done) {
   process.nextTick(function () {
