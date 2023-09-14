@@ -130,6 +130,7 @@ app.post('/api/testwrite', (req, response) => {
 app.get('/api/myprofile', (req, res) => {
   if (req.cookies.userid !== undefined){
     res.redirect(`/profile/${req.cookies.userid}`)
+
   } else {
     res.redirect(`/api/auth/steam`)
   }
@@ -138,7 +139,10 @@ app.get('/api/myprofile', (req, res) => {
 app.get('/api/current-user', (req, res) => {
 
   if (req.cookies.userid !== undefined){
-    res.send(req.cookies.userid);
+    res.send(String(req.cookies.userid));
+    console.log(req.cookies)
+    console.log(req.cookies.userid)
+    console.log(String(req.cookies.userid))
     console.log("here")
   } else {
     res.send(undefined);
