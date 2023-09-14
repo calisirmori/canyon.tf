@@ -139,6 +139,7 @@ app.get('/api/current-user', (req, res) => {
 
   if (req.cookies.userid !== undefined){
     res.send(req.cookies.userid.toString());
+    console.log(req.cookies.userid.toString());
   } else {
     res.send(undefined);
   }
