@@ -3,7 +3,7 @@ import axios from "axios";
 
 function VotePage() {
 
-  const homeMatchID = 69;
+  const homeMatchID = 5;
 
   const id = window.location.href;
   const idArray = id.split("/");
@@ -131,25 +131,25 @@ function VotePage() {
   const currentPlayers = {
     blue: {
       scout: "BLANK",
-      soldier: "POSEIDON",
-      pyro: "HUNTER",
+      soldier: "ETHER",
+      pyro: "MELON",
       demoman: "DT",
-      heavy: "RICK",
-      engie: "GG",
+      heavy: "ZUCHIMA",
+      engie: "REBEL",
       medic: "TOY",
-      sniper: "MUJET",
+      sniper: "LENNY",
       spy: "PHISH",
     },
     red: {
-      scout: "HYPHEN",
-      soldier: "JOEY LEMONS",
-      pyro: "MELON",
-      demoman: "BOWL",
-      heavy: "FIREPOW",
-      engie: "EXA",
-      medic: "WIZENED",
-      sniper: "KYNE",
-      spy: "JACOB",
+      scout: "MAYH",
+      soldier: "JACKYLEGS",
+      pyro: "TBOURDON",
+      demoman: "BUDDY",
+      heavy: "DICKSAUCE",
+      engie: "CLARK",
+      medic: "GEDU",
+      sniper: "LAIKY",
+      spy: "MEZZO",
     },
   };
 
@@ -168,11 +168,15 @@ function VotePage() {
           {!currentUserID.includes("76") && <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>} 
           
         </div>
-        <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mb-5">
-          <div className="w-96 flex justify-end text-5xl">FASTFOURTH</div>
+        <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mt-16  mb-7">
+          <div className="w-96 flex justify-end text-5xl items-center">
+            <img src="https://media.istockphoto.com/id/1096206802/vector/waving-eu-flag.jpg?s=612x612&w=0&k=20&c=hCEDwSV-oUntAZl0o0hjS9DZO6sG8dE0GGwKNE86sl8=" alt="" className="w-24 object-cover h-16 mr-3" />
+            EU
+          </div>
           <div className="w-72 flex justify-center text-3xl">VS</div>
-          <div className="w-96 flex justify-start text-5xl wra">
-            SOMEBODY HELP
+          <div className="w-96 flex justify-start text-5xl items-center">
+            USA
+            <img src="https://wallpaperaccess.com/full/122737.jpg" alt="" className=" object-cover h-16 w-24 ml-3" />
           </div>
         </div>
         {classSection(currentScoutPercent, setCurrentScoutPercent, "scout", "scout")}
@@ -230,6 +234,7 @@ function VotePage() {
           <div className=" -mb-4">
             <div className="">
               <div className="my-1 relative mx-6">
+                {currentUserID !== "" &&
                 <img
                   src={`../../../classIcons/${className}.png`}
                   className={`h-7 bottom-1.5 -ml-3  absolute transform ${
@@ -238,13 +243,15 @@ function VotePage() {
                   style={{ left: `${playerAlreadyVoted ?  communityAverage[dbName] - 1 : currentPercentSelection - 1}% ` }}
                   alt=""
                 />
+                }
+                
                 <div
-                  className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-stone-300 absolute -bottom-1 left-1/2 transform ${
+                  className={`h-2.5 rounded-lg ${currentUserID === "" ? "w-20 bottom-0.5 left-20" : "w-1 bg-stone-300 -bottom-1 left-1/2 "}  flex justify-center items-center  absolute  transform text-[0.6rem] text-stone-200 font-bold ${
                     playerAlreadyVoted ? "duration-1000" : "duration-150"
                   }`}
                   style={{ left: `${playerAlreadyVoted ?  communityAverage[dbName] - 1 : currentPercentSelection - 1}%` }}
-                ></div>
-                {playerAlreadyVoted && (
+                >{currentUserID === "" && "LOGIN TO VOTE"} </div>
+                {playerAlreadyVoted && currentUserID !== "" && (
                   <div
                     className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-2.5 left-1/2 transform ${
                       playerAlreadyVoted ? "duration-1000" : "duration-150"
@@ -259,7 +266,7 @@ function VotePage() {
                 )}
               </div>
             </div>
-            <div className="mx-6 h-1 w-60 bg-tf-blue rounded-md relative">
+            <div className={`mx-6 h-1 w-60 ${currentUserID !== "" ? "bg-tf-blue" : "bg-tf-orange"}  rounded-md relative`}>
               <div
                 className={`absolute rounded-l-lg h-1 bg-tf-red ${
                   playerAlreadyVoted ? "duration-1000" : "duration-150"
