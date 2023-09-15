@@ -173,13 +173,14 @@ function VotePage() {
           <div className="max-2xl:hidden"></div>
           <div className=" flex justify-center  max-sm:scale-[45%] max-md:scale-[60%] max-lg:scale-[75%] max-xl:scale-[85%]">
             <div>
-              <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mt-16  mb-7 ">
+                <div className=" mt-10 flex items-center justify-center font-mont mb-3 text-stone-400 font-bold unde">SUNDAY, SEPTEMBER 17TH @1PM PDT / 22:00 CEST</div>
+              <div className="flex items-center justify-center font-mont  font-bold text-stone-200  mb-7 ">
                 <div className="w-96 flex justify-end text-5xl items-center">
                   <img
                     src="https://media.istockphoto.com/id/1096206802/vector/waving-eu-flag.jpg?s=612x612&w=0&k=20&c=hCEDwSV-oUntAZl0o0hjS9DZO6sG8dE0GGwKNE86sl8="
                     alt=""
                     className="w-24 object-cover h-16 mr-3"
-                  />
+                    />
                   EU
                 </div>
                 <div className="w-72 flex justify-center text-3xl">VS</div>
