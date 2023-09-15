@@ -412,8 +412,8 @@ function VotePage() {
                     style={{
                       left: `${
                         playerAlreadyVoted
-                          ? communityAverage[dbName]
-                          : currentPercentSelection
+                          ? communityAverage[dbName]  - 0.5
+                          : currentPercentSelection  - 0.5
                       }% `,
                     }}
                     alt=""
@@ -431,8 +431,8 @@ function VotePage() {
                   style={{
                     left: `${
                       playerAlreadyVoted
-                        ? communityAverage[dbName]
-                        : currentPercentSelection
+                        ? communityAverage[dbName]  - 0.5
+                        : currentPercentSelection  - 0.5
                     }%`,
                   }}
                 >
@@ -443,7 +443,7 @@ function VotePage() {
                     className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-2.5 left-1/2 transform  ${
                       playerAlreadyVoted ? "duration-1000" : "duration-150"
                     }`}
-                    style={{ left: `${currentPercentSelection}%` }}
+                    style={{ left: `${currentPercentSelection  - 0.5}%` }}
                   >
                     <div className="absolute -bottom-0.5 select-none">
                       <div className="text-[0.5rem] text-tf-orange font-bold absolute -bottom-3 -left-2.5">
@@ -458,7 +458,6 @@ function VotePage() {
               </div>
             </div>
 
-            <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
             <div
               className={`mx-6 h-1 w-60 z-0 ${
                 currentUserID !== "" ? "bg-tf-blue" : "bg-tf-orange"
@@ -476,6 +475,7 @@ function VotePage() {
                   }%`,
                 }}
               ></div>
+              <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
             </div>
           </div>
           <div
