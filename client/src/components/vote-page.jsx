@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function VotePage() {
-  const homeMatchID = 5;
+  const homeMatchID = 0;
 
   const id = window.location.href;
   const idArray = id.split("/");
@@ -74,7 +74,6 @@ function VotePage() {
 
   useEffect(() => {
     if (currentUserID.includes("76")) {
-      console.log(currentUserID + "asdhadjahsdjkasdhlka");
       axios
         .get("https://www.canyon.tf/api/check-vote", { params })
         .then((response) => {
@@ -117,7 +116,7 @@ function VotePage() {
           console.error("Error fetching data:", error);
         });
     }
-  }, [currentUserID]);
+  }, [currentUserID, playerAlreadyVoted]);
 
   const redVote = (currentPercent, setPercentFunction) => {
     const newScore = Math.min(currentPercent + 5, 100);
@@ -158,11 +157,11 @@ function VotePage() {
     <div className="relative">
       <img
         src="https://img.maxofs2d.net/source/tf_loghouse_alpine_1920.jpg"
-        className=" object-cover w-screen h-screen absolute"
+        className=" object-cover h-screen w-screen absolute"
         alt=""
       />
-      <div className=" bg-stone-950 w-screen h-screen absolute opacity-90"></div>
-      <div className="w-screen h-screen absolute font-mont">
+      <div className=" bg-stone-950 w-full h-screen absolute opacity-90"></div>
+      <div className="w-full h-screen absolute font-mont ">
         <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
           <div>canyon.tf</div>
 
@@ -170,83 +169,198 @@ function VotePage() {
             <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>
           )}
         </div>
-        <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mt-16  mb-7">
-          <div className="w-96 flex justify-end text-5xl items-center">
-            <img
-              src="https://media.istockphoto.com/id/1096206802/vector/waving-eu-flag.jpg?s=612x612&w=0&k=20&c=hCEDwSV-oUntAZl0o0hjS9DZO6sG8dE0GGwKNE86sl8="
-              alt=""
-              className="w-24 object-cover h-16 mr-3"
-            />
-            EU
-          </div>
-          <div className="w-72 flex justify-center text-3xl">VS</div>
-          <div className="w-96 flex justify-start text-5xl items-center">
-            USA
-            <img
-              src="https://wallpaperaccess.com/full/122737.jpg"
-              alt=""
-              className=" object-cover h-16 w-24 ml-3"
-            />
-          </div>
-        </div>
-        {classSection(
-          currentScoutPercent,
-          setCurrentScoutPercent,
-          "scout",
-          "scout"
-        )}
-        {classSection(
-          currentSoldierPercent,
-          setCurrentSoldierPercent,
-          "soldier",
-          "soldier"
-        )}
-        {classSection(
-          currentPyroPercent,
-          setCurrentPyroPercent,
-          "pyro",
-          "pyro"
-        )}
-        {classSection(
-          currentDemoPercent,
-          setCurrentDemoPercent,
-          "demoman",
-          "demo"
-        )}
-        {classSection(
-          currentHeavyPercent,
-          setCurrentHeavyPercent,
-          "heavy",
-          "heavy"
-        )}
-        {classSection(
-          currentEngineerPercent,
-          setCurrentEngineerPercent,
-          "engie",
-          "engi"
-        )}
-        {classSection(
-          currentMedicPercent,
-          setCurrentMedicPercent,
-          "medic",
-          "medic"
-        )}
-        {classSection(
-          currentSniperPercent,
-          setCurrentSniperPercent,
-          "sniper",
-          "sniper"
-        )}
-        {classSection(currentSpyPercent, setCurrentSpyPercent, "spy", "spy")}
-        <div className="flex justify-center items-center mt-6">
-          {!playerAlreadyVoted && (
-            <div
-              onClick={() => sendDataToServer()}
-              className="select-none font-5xl flex justify-center items-center bg-tf-orange w-40 rounded-md border-2 p-1 border-tf-orange-dark font-bold text-xl text-stone-900 hover:scale-105 cursor-pointer duration-150"
-            >
-              SUBMIT
+        <div className=" max-sm:-my-60 justify-center border-2 border-red-400 grid max-2xl:grid-rows-[1fr,10px] 2xl:grid-cols-[1fr,2fr,1fr] gap-2">
+          <div className="max-2xl:hidden"></div>
+          <div className="border-2 border-pink-400 flex justify-center  max-sm:scale-[45%] max-md:scale-[60%] max-lg:scale-[75%] max-xl:scale-[85%]">
+            <div>
+              <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mt-16  mb-7 ">
+                <div className="w-96 flex justify-end text-5xl items-center">
+                  <img
+                    src="https://media.istockphoto.com/id/1096206802/vector/waving-eu-flag.jpg?s=612x612&w=0&k=20&c=hCEDwSV-oUntAZl0o0hjS9DZO6sG8dE0GGwKNE86sl8="
+                    alt=""
+                    className="w-24 object-cover h-16 mr-3"
+                  />
+                  EU
+                </div>
+                <div className="w-72 flex justify-center text-3xl">VS</div>
+                <div className="w-96 flex justify-start text-5xl items-center">
+                  USA
+                  <img
+                    src="https://wallpaperaccess.com/full/122737.jpg"
+                    alt=""
+                    className=" object-cover h-16 w-24 ml-3"
+                  />
+                </div>
+              </div>
+              {classSection(
+                currentScoutPercent,
+                setCurrentScoutPercent,
+                "scout",
+                "scout"
+              )}
+              {classSection(
+                currentSoldierPercent,
+                setCurrentSoldierPercent,
+                "soldier",
+                "soldier"
+              )}
+              {classSection(
+                currentPyroPercent,
+                setCurrentPyroPercent,
+                "pyro",
+                "pyro"
+              )}
+              {classSection(
+                currentDemoPercent,
+                setCurrentDemoPercent,
+                "demoman",
+                "demo"
+              )}
+              {classSection(
+                currentHeavyPercent,
+                setCurrentHeavyPercent,
+                "heavy",
+                "heavy"
+              )}
+              {classSection(
+                currentEngineerPercent,
+                setCurrentEngineerPercent,
+                "engie",
+                "engi"
+              )}
+              {classSection(
+                currentMedicPercent,
+                setCurrentMedicPercent,
+                "medic",
+                "medic"
+              )}
+              {classSection(
+                currentSniperPercent,
+                setCurrentSniperPercent,
+                "sniper",
+                "sniper"
+              )}
+              {classSection(
+                currentSpyPercent,
+                setCurrentSpyPercent,
+                "spy",
+                "spy"
+              )}
+              {playerAlreadyVoted && currentUserID !== "" && (
+                <div className="font-2xl text-stone-200 font-mont font-bold flex items-center justify-center">
+                  ICONS ARE COMMUNITY AVERAGES
+                </div>
+              )}
+              <div className="flex justify-center items-center mt-6">
+                {!playerAlreadyVoted && (
+                  <div
+                    onClick={() => sendDataToServer()}
+                    className="select-none font-5xl flex justify-center items-center bg-tf-orange w-40 rounded-md border-2 p-1 border-tf-orange-dark font-bold text-xl text-stone-900 hover:scale-105 cursor-pointer duration-150"
+                  >
+                    SUBMIT
+                  </div>
+                )}
+              </div>
             </div>
-          )}
+          </div>
+          <div className="h-fit w-full flex justify-center items-center mr-4 ">\
+          <div className="max-w-xl  p-2 max-sm:-my-72 rounded-lg bg-stone-900 bg-opacity-80 border-4 border-tf-orange">
+
+            <div className="text-center text-xl text-stone-300 font-bold pb-1 pt-2">
+              LEADERBOARD
+            </div>
+            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+              <div className="flex items-center mt-1">
+                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                  1.
+                </div>
+                <img
+                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
+                  alt=""
+                  className=" object-contain h-7 w-7 rounded-full"
+                />
+                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                  Treemonkey
+                </div>
+                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                  00
+                </div>
+              </div>
+            </div>
+            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+              <div className="flex items-center mt-1">
+                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                  2.
+                </div>
+                <img
+                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
+                  alt=""
+                  className=" object-contain h-7 w-7 rounded-full"
+                />
+                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                  Treemonkey
+                </div>
+                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                  00
+                </div>
+              </div>
+            </div>
+            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+              <div className="flex items-center mt-1">
+                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                  3.
+                </div>
+                <img
+                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
+                  alt=""
+                  className=" object-contain h-7 w-7 rounded-full"
+                />
+                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                  Treemonkey
+                </div>
+                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                  00
+                </div>
+              </div>
+            </div>
+            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+              <div className="flex items-center mt-1">
+                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                  4.
+                </div>
+                <img
+                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
+                  alt=""
+                  className=" object-contain h-7 w-7 rounded-full"
+                />
+                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                  Treemonkey
+                </div>
+                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                  00
+                </div>
+              </div>
+            </div>
+            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+              <div className="flex items-center mt-1">
+                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                  5.
+                </div>
+                <img
+                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
+                  alt=""
+                  className=" object-contain h-7 w-7 rounded-full"
+                />
+                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                  Treemonkey
+                </div>
+                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                  00
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
@@ -269,7 +383,7 @@ function VotePage() {
             className={`h-14 bg-stone-300 w-64 rounded-lg drop-shadow-md ${
               !playerAlreadyVoted &&
               "hover:cursor-pointer hover:border-tf-red-dark "
-            } border-4 border-tf-red duration-150 flex items-center justify-center font-bold select-none`}
+            } border-4 border-tf-red duration-150 flex items-center justify-center font-bold select-none max-sm:text-2xl`}
           >
             {currentPlayers.red[className]}
           </div>
@@ -285,8 +399,8 @@ function VotePage() {
                     style={{
                       left: `${
                         playerAlreadyVoted
-                          ? communityAverage[dbName] - 1
-                          : currentPercentSelection - 1
+                          ? communityAverage[dbName]
+                          : currentPercentSelection
                       }% `,
                     }}
                     alt=""
@@ -294,18 +408,18 @@ function VotePage() {
                 )}
 
                 <div
-                  className={`h-2.5 rounded-lg ${
+                  className={`h-2.5 rounded-lg  ${
                     currentUserID === ""
                       ? "w-20 bottom-1 left-20"
                       : "w-1 bg-stone-300 -bottom-1 left-1/2 "
-                  }  flex justify-center items-center  absolute  transform text-[0.6rem] text-stone-200 font-bold ${
+                  }  flex justify-center items-center  absolute  transform text-[0.6rem] max-sm:text-xs max-sm:w-40 max-sm:left-10 text-stone-200 font-bold  ${
                     playerAlreadyVoted ? "duration-1000" : "duration-150"
                   }`}
                   style={{
                     left: `${
                       playerAlreadyVoted
-                        ? communityAverage[dbName] - 1
-                        : currentPercentSelection - 1
+                        ? communityAverage[dbName]
+                        : currentPercentSelection
                     }%`,
                   }}
                 >
@@ -313,10 +427,10 @@ function VotePage() {
                 </div>
                 {playerAlreadyVoted && currentUserID !== "" && (
                   <div
-                    className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-2.5 left-1/2 transform ${
+                    className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-2.5 left-1/2 transform  ${
                       playerAlreadyVoted ? "duration-1000" : "duration-150"
                     }`}
-                    style={{ left: `${currentPercentSelection - 1}%` }}
+                    style={{ left: `${currentPercentSelection}%` }}
                   >
                     <div className="absolute -bottom-0.5 select-none">
                       <div className="text-[0.5rem] text-tf-orange font-bold absolute -bottom-3 -left-2.5">
@@ -330,25 +444,24 @@ function VotePage() {
                 )}
               </div>
             </div>
-            
+
             <div
               className={`mx-6 h-1 w-60 ${
                 currentUserID !== "" ? "bg-tf-blue" : "bg-tf-orange"
               }  rounded-md relative`}
             >
-              
               <div
-                className={`absolute rounded-l-lg h-1 bg-tf-red z-10 ${
+                className={`absolute rounded-l-lg h-1 bg-tf-red z-10  ${
                   playerAlreadyVoted ? "duration-1000" : "duration-150"
                 }`}
                 style={{
                   width: `${
                     playerAlreadyVoted
-                    ? communityAverage[dbName]
-                    : currentPercentSelection
+                      ? communityAverage[dbName]
+                      : currentPercentSelection
                   }%`,
                 }}
-                ></div>
+              ></div>
               <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
             </div>
           </div>
@@ -357,9 +470,9 @@ function VotePage() {
               !playerAlreadyVoted &&
                 blueVote(currentPercentSelection, setCurrentPercentSelection);
             }}
-            className={`h-14  bg-stone-300 w-64 rounded-lg drop-shadow-md ${
+            className={`h-14  bg-stone-300 w-64 rounded-lg drop-shadow-md max-sm:text-2xl ${
               !playerAlreadyVoted &&
-              "hover:cursor-pointer hover:border-tf-blue-dark"
+              "hover:cursor-pointer hover:border-tf-blue-dark "
             } border-4 border-tf-blue  duration-150 flex items-center justify-center font-bold select-none`}
           >
             {currentPlayers.blue[className]}
