@@ -156,17 +156,24 @@ function VotePage() {
   return (
     <div className="relative">
       <img
-        src="https://img.maxofs2d.net/source/tf_loghouse_alpine_1920.jpg"
+        src="/bg.jpg"
         className=" object-cover h-screen w-screen absolute"
         alt=""
       />
       <div className=" bg-stone-950 w-full h-screen absolute opacity-90"></div>
       <div className="w-full h-screen absolute font-mont ">
         <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
-          <div>canyon.tf</div>
+          <div>
+            <div className="flex items-center">
+            <img src="/canyon.png" className="h-10 mr-2" alt="" />
+              canyon.tf
+            </div>
+            </div>
 
           {!currentUserID.includes("76") && (
-            <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>
+            <a href="https://www.canyon.tf/api/myprofile">
+              <img src="/sign-in-through-steam.png" className="h-10" alt="" />
+            </a>
           )}
         </div>
         <div className=" max-sm:-my-60 justify-center  grid max-2xl:grid-rows-[1fr,10px] 2xl:grid-cols-[1fr,2fr,1fr] gap-2">
@@ -177,7 +184,7 @@ function VotePage() {
               <div className="flex items-center justify-center font-mont  font-bold text-stone-200  mb-7 ">
                 <div className="w-96 flex justify-end text-5xl items-center">
                   <img
-                    src="https://media.istockphoto.com/id/1096206802/vector/waving-eu-flag.jpg?s=612x612&w=0&k=20&c=hCEDwSV-oUntAZl0o0hjS9DZO6sG8dE0GGwKNE86sl8="
+                    src="eu.jpg"
                     alt=""
                     className="w-24 object-cover h-16 mr-3"
                     />
@@ -187,7 +194,7 @@ function VotePage() {
                 <div className="w-96 flex justify-start text-5xl items-center">
                   USA
                   <img
-                    src="https://wallpaperaccess.com/full/122737.jpg"
+                    src="/usa.webp"
                     alt=""
                     className=" object-cover h-16 w-24 ml-3"
                   />
@@ -276,7 +283,7 @@ function VotePage() {
                     1.
                   </div>
                   <img
-                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    src="/question.webp"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
@@ -294,7 +301,7 @@ function VotePage() {
                     2.
                   </div>
                   <img
-                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    src="/question.webp"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
@@ -312,7 +319,7 @@ function VotePage() {
                     3.
                   </div>
                   <img
-                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    src="/question.webp"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
@@ -330,7 +337,7 @@ function VotePage() {
                     4.
                   </div>
                   <img
-                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    src="/question.webp"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
@@ -348,7 +355,7 @@ function VotePage() {
                     5.
                   </div>
                   <img
-                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    src="/question.webp"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
@@ -360,7 +367,7 @@ function VotePage() {
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-stone-300 font-bold mt-2 ml-1">CLOSER PREDICTION = MORE POINTS</div>
+              <div className="text-xs text-stone-300 font-bold mt-2 ml-6">CLOSER PREDICTION = MORE POINTS</div>
             </div>
           </div>
         </div>
