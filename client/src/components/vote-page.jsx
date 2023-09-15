@@ -475,7 +475,7 @@ function VotePage() {
                   }%`,
                 }}
               ></div>
-              <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
+              <div className="w-1 h-2 bg-stone-300 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
             </div>
           </div>
           <div
