@@ -412,8 +412,8 @@ function VotePage() {
                     style={{
                       left: `${
                         playerAlreadyVoted
-                          ? communityAverage[dbName]  - 0.5
-                          : currentPercentSelection  - 0.5
+                          ? communityAverage[dbName]
+                          : currentPercentSelection
                       }% `,
                     }}
                     alt=""
@@ -431,8 +431,8 @@ function VotePage() {
                   style={{
                     left: `${
                       playerAlreadyVoted
-                        ? communityAverage[dbName]  - 0.5
-                        : currentPercentSelection  - 0.5
+                        ? communityAverage[dbName]
+                        : currentPercentSelection
                     }%`,
                   }}
                 >
@@ -443,7 +443,7 @@ function VotePage() {
                     className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-tf-orange absolute -bottom-2.5 left-1/2 transform  ${
                       playerAlreadyVoted ? "duration-1000" : "duration-150"
                     }`}
-                    style={{ left: `${currentPercentSelection  - 0.5}%` }}
+                    style={{ left: `${currentPercentSelection}%` }}
                   >
                     <div className="absolute -bottom-0.5 select-none">
                       <div className="text-[0.5rem] text-tf-orange font-bold absolute -bottom-3 -left-2.5">
