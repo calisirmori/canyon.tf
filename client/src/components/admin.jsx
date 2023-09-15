@@ -86,6 +86,8 @@ function AdminPage() {
     var URL = `https://canyon-tf-site-dg3ts.ondigitalocean.app/api/rgl-profile/${UserID}`;
     const response = await axios.get(URL);
     setTotalReactPackages(response.data.total);
+    console.log(response.data.name);
+    console.log(response.data.avatar);
 
     // Return both the response and the UserID
     return { data: response.data, userId: UserID };
