@@ -83,6 +83,12 @@ app.get('/api/testdb', (req, response) => {
   .catch((err) => console.error(err))
 });
 
+app.get('/api/db-ip-test', (req, response) => {
+  pool.query(`VACUUM ANALYZE`)
+  .then((res) => response.send(res))
+  .catch((err) => console.error(err))
+});
+
 app.get('/api/check-vote', (req, response) => {
   const userid = req.query.userid;
   const matchid = req.query.matchid;
