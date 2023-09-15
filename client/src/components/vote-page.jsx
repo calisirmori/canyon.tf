@@ -105,9 +105,9 @@ function VotePage() {
             setCurrentScoutPercent(response.data[0].scout_prediction);
             setCurrentSoldierPercent(response.data[0].soldier_prediction);
             setCurrentPyroPercent(response.data[0].pyro_prediction);
-            setCurrentDemoPercent(response.data[0].demom_prediction);
+            setCurrentDemoPercent(response.data[0].demo_prediction);
             setCurrentHeavyPercent(response.data[0].heavy_prediction);
-            setCurrentEngineerPercent(response.data[0].engie_prediction);
+            setCurrentEngineerPercent(response.data[0].engi_prediction);
             setCurrentMedicPercent(response.data[0].medic_prediction);
             setCurrentSniperPercent(response.data[0].sniper_prediction);
             setCurrentSpyPercent(response.data[0].spy_prediction);
