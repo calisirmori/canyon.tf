@@ -184,7 +184,7 @@ function VotePage() {
           <div className="max-2xl:hidden"></div>
           <div className=" flex justify-center  max-sm:scale-[45%] max-md:scale-[60%] max-lg:scale-[75%] max-xl:scale-[85%]">
             <div>
-                <div className=" mt-10 flex items-center justify-center font-mont mb-3 text-stone-400 font-bold unde">SUNDAY, SEPTEMBER 17TH @1PM PDT / 22:00 CEST</div>
+                <div className=" mt-7 flex items-center justify-center font-mont mb-3 text-stone-400 font-bold unde">SUNDAY, SEPTEMBER 17TH @1PM PDT / 22:00 CEST</div>
               <div className="flex items-center justify-center font-mont  font-bold text-stone-200  mb-7 ">
                 <div className="w-96 flex justify-end text-5xl items-center">
                   <img
@@ -458,8 +458,9 @@ function VotePage() {
               </div>
             </div>
 
+            <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
             <div
-              className={`mx-6 h-1 w-60 ${
+              className={`mx-6 h-1 w-60 z-0 ${
                 currentUserID !== "" ? "bg-tf-blue" : "bg-tf-orange"
               }  rounded-md relative`}
             >
@@ -475,7 +476,6 @@ function VotePage() {
                   }%`,
                 }}
               ></div>
-              <div className="w-0.5 h-2 bg-stone-200 rounded-lg left-1/2 absolute -bottom-0.5 z-50"></div>
             </div>
           </div>
           <div
