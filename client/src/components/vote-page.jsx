@@ -263,103 +263,104 @@ function VotePage() {
               </div>
             </div>
           </div>
-          <div className="h-fit w-full flex justify-center items-center mr-4 ">\
-          <div className="max-w-xl  p-2 max-sm:-my-72 rounded-lg bg-stone-900 bg-opacity-80 border-4 border-tf-orange">
-
-            <div className="text-center text-xl text-stone-300 font-bold pb-1 pt-2">
-              LEADERBOARD
-            </div>
-            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
-              <div className="flex items-center mt-1">
-                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
-                  1.
-                </div>
-                <img
-                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
-                  alt=""
-                  className=" object-contain h-7 w-7 rounded-full"
-                />
-                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                  Treemonkey
-                </div>
-                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                  00
+          <div className="h-fit w-full flex justify-center items-center mr-4 ">
+            \
+            <div className="max-w-xl p-2 max-sm:-my-72 rounded-lg bg-stone-900 bg-opacity-80 border-4 border-tf-orange">
+              <div className="text-center text-xl text-stone-300 font-bold pb-1 pt-2">
+                LEADERBOARD
+              </div>
+              <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+                <div className="flex items-center mt-1">
+                  <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                    1.
+                  </div>
+                  <img
+                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    alt=""
+                    className=" object-contain h-7 w-7 rounded-full"
+                  />
+                  <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                    4 keys
+                  </div>
+                  <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                    00
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
-              <div className="flex items-center mt-1">
-                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
-                  2.
-                </div>
-                <img
-                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
-                  alt=""
-                  className=" object-contain h-7 w-7 rounded-full"
-                />
-                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                  Treemonkey
-                </div>
-                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                  00
-                </div>
-              </div>
-            </div>
-            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
-              <div className="flex items-center mt-1">
-                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
-                  3.
-                </div>
-                <img
-                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
-                  alt=""
-                  className=" object-contain h-7 w-7 rounded-full"
-                />
-                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                  Treemonkey
-                </div>
-                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                  00
+              <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+                <div className="flex items-center mt-1">
+                  <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                    2.
+                  </div>
+                  <img
+                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    alt=""
+                    className=" object-contain h-7 w-7 rounded-full"
+                  />
+                  <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                    2 keys
+                  </div>
+                  <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                    00
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
-              <div className="flex items-center mt-1">
-                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
-                  4.
-                </div>
-                <img
-                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
-                  alt=""
-                  className=" object-contain h-7 w-7 rounded-full"
-                />
-                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                  Treemonkey
-                </div>
-                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                  00
-                </div>
-              </div>
-            </div>
-            <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
-              <div className="flex items-center mt-1">
-                <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
-                  5.
-                </div>
-                <img
-                  src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a128800c45beb2e9f33624b1a921b3df7dc8c05f_full.jpg"
-                  alt=""
-                  className=" object-contain h-7 w-7 rounded-full"
-                />
-                <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                  Treemonkey
-                </div>
-                <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                  00
+              <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+                <div className="flex items-center mt-1">
+                  <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                    3.
+                  </div>
+                  <img
+                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    alt=""
+                    className=" object-contain h-7 w-7 rounded-full"
+                  />
+                  <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                    1 key
+                  </div>
+                  <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                    00
+                  </div>
                 </div>
               </div>
+              <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+                <div className="flex items-center mt-1">
+                  <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                    4.
+                  </div>
+                  <img
+                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    alt=""
+                    className=" object-contain h-7 w-7 rounded-full"
+                  />
+                  <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                    nothing
+                  </div>
+                  <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                    00
+                  </div>
+                </div>
+              </div>
+              <div className="px-2 flex items-center justify-between border-t-2 border-stone-600 mt-1">
+                <div className="flex items-center mt-1">
+                  <div className="text-xl text-stone-300 font-semibold w-8 h-8 border-r-2 border-stone-600 mr-2">
+                    5.
+                  </div>
+                  <img
+                    src="https://cdn-bobng.nitrocdn.com/RHhadhYbRCFahPINTkKzTTLCgsZSPTCG/assets/images/optimized/rev-293f768/wp-content/uploads/1024px-Question-mark.jpg"
+                    alt=""
+                    className=" object-contain h-7 w-7 rounded-full"
+                  />
+                  <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
+                    nothing
+                  </div>
+                  <div className="text-xl text-stone-300 font-semibold w-12 text-center">
+                    00
+                  </div>
+                </div>
+              </div>
+              <div className="text-xs text-stone-300 font-bold mt-2 ml-1">CLOSER PREDICTIONS EARN MOST POINTS</div>
             </div>
-          </div>
           </div>
         </div>
       </div>
