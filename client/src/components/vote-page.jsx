@@ -338,7 +338,7 @@ function VotePage() {
             >
               
               <div
-                className={`absolute rounded-l-lg h-1 bg-tf-red -z-10 ${
+                className={`absolute rounded-l-lg h-1 bg-tf-red z-10 ${
                   playerAlreadyVoted ? "duration-1000" : "duration-150"
                 }`}
                 style={{
