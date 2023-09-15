@@ -162,7 +162,7 @@ function VotePage() {
       />
       <div className=" bg-stone-950 w-full h-screen absolute opacity-90"></div>
       <div className="w-full h-screen absolute font-mont ">
-        <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200 mb-5 justify-between flex">
+        <div className=" text-3xl font-bold p-3 pl-6 bg-stone-950 bg-opacity-40 text-stone-200  justify-between flex">
           <div>
             <div className="flex items-center">
             <img src="/canyon.png" className="h-10 mr-2" alt="" />
@@ -175,6 +175,10 @@ function VotePage() {
               <img src="/sign-in-through-steam.png" className="h-10" alt="" />
             </a>
           )}
+        </div>
+        <div className="mb-5 h-3.5 flex justify-center items-center text-xs bg-opacity-80 font-semibold bg-tf-orange">
+        this app is still really early in its development, to report bugs, share ideas, or to contact the developer reach out to Mori#8885 on discord or click discord link:
+        <a href="https://discord.gg/w2cUnM7A" target="_blank" className="ml-2 underline">Discord</a>
         </div>
         <div className=" max-sm:-my-60 justify-center  grid max-2xl:grid-rows-[1fr,10px] 2xl:grid-cols-[1fr,2fr,1fr] gap-2">
           <div className="max-2xl:hidden"></div>
