@@ -169,9 +169,9 @@ function VotePage() {
             <a href="https://www.canyon.tf/api/myprofile">LOGIN</a>
           )}
         </div>
-        <div className=" max-sm:-my-60 justify-center border-2 border-red-400 grid max-2xl:grid-rows-[1fr,10px] 2xl:grid-cols-[1fr,2fr,1fr] gap-2">
+        <div className=" max-sm:-my-60 justify-center  grid max-2xl:grid-rows-[1fr,10px] 2xl:grid-cols-[1fr,2fr,1fr] gap-2">
           <div className="max-2xl:hidden"></div>
-          <div className="border-2 border-pink-400 flex justify-center  max-sm:scale-[45%] max-md:scale-[60%] max-lg:scale-[75%] max-xl:scale-[85%]">
+          <div className=" flex justify-center  max-sm:scale-[45%] max-md:scale-[60%] max-lg:scale-[75%] max-xl:scale-[85%]">
             <div>
               <div className="flex items-center justify-center font-mont  font-bold text-stone-200 mt-16  mb-7 ">
                 <div className="w-96 flex justify-end text-5xl items-center">
