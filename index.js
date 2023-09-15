@@ -100,6 +100,12 @@ app.get('/api/check-vote', (req, response) => {
   .catch((err) => console.error(err));
 });
 
+app.get('/api/vote-count', (req, response) => {
+  pool.query(`select count(steamid) from predictions where matchid=0`)
+  .then((res) => response.send(res))
+  .catch((err) => console.error(err))
+});
+
 app.get('/api/community-average', (req, response) => {
   const matchID = req.query.matchid;
   const sql = `
