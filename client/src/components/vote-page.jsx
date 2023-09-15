@@ -359,7 +359,7 @@ function VotePage() {
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-stone-300 font-bold mt-2 ml-1">CLOSER PREDICTIONS EARN MOST POINTS</div>
+              <div className="text-xs text-stone-300 font-bold mt-2 ml-1">CLOSER PREDICTION = MORE POINTS</div>
             </div>
           </div>
         </div>
