@@ -129,16 +129,16 @@ function VotePage() {
   };
 
   const finalScores = {
-      scout: 50,
-      soldier: 50,
-      pyro: 50,
-      demoman: 50,
-      heavy: 50,
-      engie: 50,
-      medic: 50,
-      sniper: 50,
-      spy: 50,
-    };
+    scout: 34,
+    soldier: 68,
+    pyro: 64,
+    demoman: 55,
+    heavy: 54,
+    engie: 51,
+    medic: 57,
+    sniper: 51,
+    spy: 54,
+  };
   
   const currentPlayers = {
     blue: {
@@ -299,15 +299,15 @@ function VotePage() {
                     1.
                   </div>
                   <img
-                    src="/question.webp"
+                    src="https://avatars.akamai.steamstatic.com/e144f44b37ca716fae800dc30630ae83fc89fc73_full.jpg"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
                   <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                    4 keys
+                    Mong
                   </div>
                   <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                    00
+                    24
                   </div>
                 </div>
               </div>
@@ -317,15 +317,15 @@ function VotePage() {
                     2.
                   </div>
                   <img
-                    src="/question.webp"
+                    src="https://avatars.akamai.steamstatic.com/049adeda902b002c22bf6d10f07790cc37a6b6ae_full.jpg"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
                   <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                    2 keys
+                    kirisame
                   </div>
                   <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                    00
+                    23
                   </div>
                 </div>
               </div>
@@ -335,15 +335,15 @@ function VotePage() {
                     3.
                   </div>
                   <img
-                    src="/question.webp"
+                    src="https://avatars.akamai.steamstatic.com/fc52f9b59e0cad6d419040e65a97bc8c595b5ce8_full.jpg"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
                   <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                    1 key
+                  minicircle
                   </div>
                   <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                    00
+                    23
                   </div>
                 </div>
               </div>
@@ -353,15 +353,15 @@ function VotePage() {
                     4.
                   </div>
                   <img
-                    src="/question.webp"
+                    src="https://avatars.akamai.steamstatic.com/b77f28a2e791d89ea66343708135adffdb2f9eff_full.jpg"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
                   <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                    nothing
+                    goz
                   </div>
                   <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                    00
+                    22
                   </div>
                 </div>
               </div>
@@ -371,19 +371,19 @@ function VotePage() {
                     5.
                   </div>
                   <img
-                    src="/question.webp"
+                    src="https://avatars.akamai.steamstatic.com/d45b64b3f12c2888ea5d3dafe5a187d22bfda811_full.jpg"
                     alt=""
                     className=" object-contain h-7 w-7 rounded-full"
                   />
                   <div className="ml-2 text-medium text-stone-300 font-semibold w-36 h-8 border-r-2 border-stone-600 items-center flex truncate">
-                    nothing
+                  sunflowertf
                   </div>
                   <div className="text-xl text-stone-300 font-semibold w-12 text-center">
-                    00
+                    21
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-stone-300 font-bold mt-2 ml-6">CLOSER PREDICTION = MORE POINTS</div>
+              <div className="text-xs text-stone-300 font-bold mt-2 ml-7">CONTACT ME FOR REWARDS 1-2-3</div>
             </div>
           </div>
         </div>
@@ -423,9 +423,7 @@ function VotePage() {
                     } select-none`}
                     style={{
                       left: `${
-                        playerAlreadyVoted
-                          ? communityAverage[dbName]
-                          : currentPercentSelection
+                        finalScores[className]
                       }% `,
                     }}
                     alt=""
@@ -433,7 +431,7 @@ function VotePage() {
                 )}
 
                 <div
-                  className={`h-2.5 rounded-lg  ${
+                  className={`h-2.5 rounded-lg opacity-20  ${
                     currentUserID === ""
                       ? "w-20 bottom-1 left-20"
                       : "w-1 bg-stone-300 -bottom-1 left-1/2 "
@@ -442,9 +440,7 @@ function VotePage() {
                   }`}
                   style={{
                     left: `${
-                      playerAlreadyVoted
-                        ? communityAverage[dbName]
-                        : currentPercentSelection
+                      finalScores[className]
                     }%`,
                   }}
                 >
@@ -467,7 +463,7 @@ function VotePage() {
                     </div>
                   </div>
                 )}
-                  {/* <div
+                  <div
                     className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-green-500 absolute -bottom-2.5 left-1/2 transform  ${
                       playerAlreadyVoted ? "duration-1000" : "duration-150"
                     }`}
@@ -478,7 +474,7 @@ function VotePage() {
                         FINAL
                       </div>
                     </div>
-                  </div> */}
+                  </div>
               </div>
             </div>
 
