@@ -128,6 +128,18 @@ function VotePage() {
     setPercentFunction(newScore);
   };
 
+  const finalScores = {
+      scout: 50,
+      soldier: 50,
+      pyro: 50,
+      demoman: 50,
+      heavy: 50,
+      engie: 50,
+      medic: 50,
+      sniper: 50,
+      spy: 50,
+    };
+  
   const currentPlayers = {
     blue: {
       scout: "BLANK",
@@ -266,10 +278,10 @@ function VotePage() {
               <div className="flex justify-center items-center mt-6">
                 {!playerAlreadyVoted && (
                   <div
-                    onClick={() => sendDataToServer()}
-                    className="select-none font-5xl flex justify-center items-center bg-tf-orange w-40 rounded-md border-2 p-1 border-tf-orange-dark font-bold text-xl text-stone-900 hover:scale-105 cursor-pointer duration-150"
+                    // onClick={() => sendDataToServer()}
+                    className="select-none font-5xl flex justify-center items-center bg-stone-500 w-40 rounded-md border-2 p-1 border-stone-700 font-bold text-xl text-stone-900 duration-150"
                   >
-                    SUBMIT
+                    CLOSED
                   </div>
                 )}
               </div>
@@ -455,6 +467,18 @@ function VotePage() {
                     </div>
                   </div>
                 )}
+                  {/* <div
+                    className={`h-2.5 rounded-lg w-1 flex justify-center items-center bg-green-500 absolute -bottom-2.5 left-1/2 transform  ${
+                      playerAlreadyVoted ? "duration-1000" : "duration-150"
+                    }`}
+                    style={{ left: `${finalScores[className]}%` }}
+                  >
+                    <div className="absolute -bottom-0.5 select-none">
+                      <div className="text-[0.5rem] text-green-500 font-bold absolute -bottom-3 -left-2.5">
+                        FINAL
+                      </div>
+                    </div>
+                  </div> */}
               </div>
             </div>
 
