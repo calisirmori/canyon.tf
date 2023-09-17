@@ -440,7 +440,10 @@ function VotePage() {
                   }`}
                   style={{
                     left: `${
-                      finalScores[className]
+                      
+                      playerAlreadyVoted
+                          ? communityAverage[dbName]
+                          : currentPercentSelection
                     }%`,
                   }}
                 >
@@ -480,7 +483,7 @@ function VotePage() {
 
             <div
               className={`mx-6 h-1 w-60 z-0 ${
-                currentUserID !== "" ? "bg-tf-blue" : "bg-tf-orange"
+                currentUserID !== "" ? "bg-tf-blue" : "bg-tf-blue"
               }  rounded-md relative`}
             >
               <div
@@ -489,9 +492,7 @@ function VotePage() {
                 }`}
                 style={{
                   width: `${
-                    playerAlreadyVoted
-                      ? communityAverage[dbName]
-                      : currentPercentSelection
+                    finalScores[className]
                   }%`,
                 }}
               ></div>
