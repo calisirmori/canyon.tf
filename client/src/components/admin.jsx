@@ -75,6 +75,27 @@ function AdminPage() {
     );
   }
 
+  //URL MAKERS
+
+  const teamNameAndAvatarGetter = async (RGLLink) => {
+    const splittedRGLLinkArr = RGLLink.split("t=");
+
+    let teamID =
+      splittedRGLLinkArr[1] && splittedRGLLinkArr[1].includes("&")
+        ? splittedRGLLinkArr[1].split("&")[0]
+        : splittedRGLLinkArr[1];
+
+    var URL = `https://api.rgl.gg/v0/teams/${teamID}`;
+
+    console.log(URL);
+    const response = await axios.get(URL);
+    setTotalReactPackages(response.data.total);
+    console.log(response.data.name);
+
+    // Return both the response and the TeamID
+    return { data: response.data, teamID: teamID };
+  };
+
   const userAvatarAndNameGetter = async (RGLLink) => {
     const splittedRGLLinkArr = RGLLink.split("p=");
 
@@ -83,7 +104,7 @@ function AdminPage() {
         ? splittedRGLLinkArr[1].split("&")[0]
         : splittedRGLLinkArr[1];
 
-    var URL = `https://canyon-tf-site-dg3ts.ondigitalocean.app/api/rgl-profile/${UserID}`;
+    var URL = `https://canyon.tf/api/rgl-profile/${UserID}`;
     const response = await axios.get(URL);
     setTotalReactPackages(response.data.total);
     console.log(response.data.name);
@@ -93,6 +114,7 @@ function AdminPage() {
     return { data: response.data, userId: UserID };
   };
 
+  //RETURN
   return (
     <div className="relative">
       <img
@@ -108,6 +130,7 @@ function AdminPage() {
         <div className=" font-mont">
           <img src={""} alt="" className=" h-8 mx-4" />
           <div className="grid justify-center items-center">
+            {TeamNameAndAvatarGetter()}
             {NameAndAvatarChecker("scout")}
             {NameAndAvatarChecker("soldier")}
             {NameAndAvatarChecker("pyro")}
@@ -124,6 +147,131 @@ function AdminPage() {
     </div>
   );
 
+  function TeamNameAndAvatarGetter() {
+    const [RedTeamRGLLink, setRedTeamRGLLink] = useState("");
+    const [RedTeamResponse, setRedTeamResponse] = useState({ isChecked: 0 });
+    const [BlueTeamRGLLink, setBlueTeamRGLLink] = useState("");
+    const [BlueTeamResponse, setBlueTeamResponse] = useState({ isChecked: 0 });
+    const [RedTeamDetails, setRedTeamDetails] = useState({}); // Added this state
+    const [BlueTeamDetails, setBlueTeamDetails] = useState({}); // Added this state
+
+    useEffect(() => {
+      if (RedTeamRGLLink) {
+        teamNameAndAvatarGetter(RedTeamRGLLink).then(({ data, teamId }) => {
+          setRedTeamResponse(data);
+          setRedTeamDetails((prevDetails) => ({
+            ...prevDetails,
+            REDTeam: {
+              name: data.name,
+              teamId: teamId,
+            },
+          }));
+        });
+      }
+    }, [RedTeamRGLLink]);
+
+    useEffect(() => {
+      if (BlueTeamRGLLink) {
+        teamNameAndAvatarGetter(BlueTeamRGLLink).then(({ data, teamId }) => {
+          setBlueTeamResponse(data);
+          setBlueTeamDetails((prevDetails) => ({
+            ...prevDetails,
+            BLUTeam: {
+              name: data.name,
+              teamId: teamId,
+            },
+          }));
+        });
+      }
+    }, [BlueTeamRGLLink]);
+
+    const handleBlueToggle = () => {
+      setBlueTeamResponse((prevData) => ({
+        ...prevData,
+        isChecked: prevData.isChecked === 0 ? 1 : 0,
+      }));
+    };
+
+    const handleRedToggle = () => {
+      setRedTeamResponse((prevData) => ({
+        ...prevData,
+        isChecked: prevData.isChecked === 0 ? 1 : 0,
+      }));
+    };
+    return (
+      <div className="mb-5 flex justify-center items-center ">
+        <div className="w-80 justify-end items-center flex">
+          {RedTeamResponse.name && (
+            <span className="text-stone-200 font-semibold text-xl">
+              #{RedTeamResponse.name}
+            </span>
+          )}
+          {RedTeamResponse.avatar && (
+            <img
+              src={`${RedTeamResponse.avatar}`}
+              alt=""
+              className="rounded-lg h-8 mx-4 "
+            />
+          )}
+        </div>
+        <button
+          className={`rounded-lg border-2 h-8 w-8 mr-2 ${
+            RedTeamResponse.isChecked === 1
+              ? " bg-green-500 border-green-900"
+              : "bg-red-600 border-red-900"
+          }`}
+          onClick={handleRedToggle}
+        />
+        <input
+          id="RGLLink"
+          placeholder={`Red Team RGL Link`}
+          type="text"
+          value={RedTeamRGLLink}
+          onChange={(e) => {
+            setRedTeamRGLLink(e.target.value);
+          }}
+          className="h-10 bg-stone-200 rounded-md text-xs w-[26rem] font-semibold border-2 border-tf-red px-2 outline-none"
+        />
+        <img src={`../../../REDTeam.png`} alt="" className="h-8 mx-4 " />
+        <span className="text-stone-200 font-semibold text-xl absolute self-center">
+          :
+        </span>
+        <img src={`../../../BLUTeam.png`} alt="" className="h-8 mx-4 ml-9" />
+        <input
+          id="RGLLink"
+          placeholder={`Blue Team RGL Link`}
+          type="text"
+          value={BlueTeamRGLLink}
+          onChange={(e) => {
+            setBlueTeamRGLLink(e.target.value);
+          }}
+          className="h-10 bg-stone-200 rounded-md text-xs w-[26rem] font-semibold border-2 border-tf-blue px-2 outline-none"
+        />
+        <button
+          className={`rounded-lg border-2 h-8 w-8 ml-2 ${
+            BlueTeamResponse.isChecked === 1
+              ? " bg-green-500 border-green-900"
+              : "bg-red-600 border-red-900"
+          }`}
+          onClick={handleBlueToggle}
+        />
+        <div className="w-80 flex justify-start items-center">
+          {BlueTeamResponse.avatar && (
+            <img
+              src={`${BlueTeamResponse.avatar}`}
+              alt=""
+              className="rounded-lg h-8 ml-4 mr-2"
+            />
+          )}
+          {BlueTeamResponse.name && (
+            <span className="text-stone-200 font-semibold text-xl">
+              #{BlueTeamResponse.name}
+            </span>
+          )}
+        </div>
+      </div>
+    );
+  }
   function NameAndAvatarChecker(className) {
     const [RedClassRGLLink, setRedClassRGLLink] = useState("");
     const [RedResponse, setRedResponse] = useState({ isChecked: 0 });
